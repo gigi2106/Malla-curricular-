@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Interactiva - Terapia Ocupacional</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <h1>Malla Curricular Interactiva 🎓</h1>
+        <p>Terapia Ocupacional</p>
+    </header>
+
+    <main id="malla-curricular" class="malla-container"></main>
+
+    <div id="modal-requisitos" class="modal-oculto">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Requisitos Faltantes</h2>
+            <p>Para aprobar este ramo, primero necesitas aprobar:</p>
+            <ul id="lista-requisitos-faltantes"></ul>
+        </div>
+    </div>
+    
+    <div class="controles">
+        <button id="limpiar-progreso">Limpiar Progreso</button>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
