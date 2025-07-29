@@ -1,1 +1,216 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcefee; /* Rosado pastel muy claro para el fondo */
+    color: #444;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #d15a80; /* Tono de rosado más oscuro para los títulos */
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+    color: #e08dac;
+}
+
+/* Contenedor principal de la malla */
+.malla-container {
+    display: flex;
+    flex-wrap: nowrap; /* Evita que las columnas se bajen */
+    gap: 20px;
+    padding: 20px;
+    overflow-x: auto; /* Permite el scroll horizontal en pantallas pequeñas */
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada columna de semestre */
+.semestre {
+    flex: 0 0 200px; /* Base de ancho para cada semestre, no crece, no se encoge */
+    min-width: 200px;
+    background-color: #fff0f5; /* Rosado pastel para el fondo del semestre */
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #f9dbe5;
+}
+
+.semestre h2 {
+    font-size: 1.1em;
+    text-align: center;
+    color: #c74b75;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f7cad0;
+}
+
+/* Estilo para cada ramo (cajita) */
+.ramo {
+    background-color: #ffffff;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 5px solid #e08dac; /* Borde rosado por defecto */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+    position: relative;
+}
+
+.ramo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTADOS DE LOS RAMOS --- */
+
+/* Ramo aprobado */
+.ramo.aprobado {
+    background-color: #d1e7dd; /* Un verde pastel para indicar éxito */
+    border-left-color: #5cb85c;
+    color: #333;
+}
+
+.ramo.aprobado::after {
+    content: '✔';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+/* Ramo bloqueado */
+.ramo.bloqueado {
+    background-color: #fdeaea; /* Un rojo pastel para indicar bloqueo */
+    border-left-color: #d9534f;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.ramo.bloqueado::after {
+    content: '🔒';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d9534f;
+}
+
+/* --- MODAL DE REQUISITOS --- */
+.modal-oculto {
+    display: none; /* Por defecto, el modal está oculto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-visible {
+    display: flex; /* Se muestra con Flexbox para centrar el contenido */
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.cerrar-modal:hover {
+    color: #333;
+}
+
+#lista-requisitos-faltantes {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#lista-requisitos-faltantes li {
+    background-color: #fcefee;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    color: #c74b75;
+    font-weight: 600;
+}
+
+/* Controles y botón de limpiar */
+.controles {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#limpiar-progreso {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+#limpiar-progreso:hover {
+    background-color: #c9302c;
+}
+
+
+/* Diseño Responsivo para celulares */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .malla-container {
+        /* En móvil, permitimos que las columnas se organicen como sea necesario */
+        flex-direction: column;
+        overflow-x: hidden; /* Ocultamos el scroll horizontal */
+        padding: 10px;
+        gap: 25px;
+    }
+
+    .semestre {
+        /* Ocupan todo el ancho disponible */
+        flex-basis: 100%; 
+    }
+}
